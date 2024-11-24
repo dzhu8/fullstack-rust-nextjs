@@ -214,26 +214,3 @@ fn handle_delete_request(request: &str) -> (String, String) {
         _ => (INTERNAL_ERROR.to_string(), "Internal error".to_string()),
     }
 }
-
-fn main() {
-    // Set Database
-    if let Err(_) = set_database() {
-        println!("Error setting database");
-        return;
-    }
-
-    // Start server and print port
-    let listener = TcpListener::bind(format!("0.0.0.0:8080")).unwrap();
-    println!("Server listening on port 8080");
-
-    for stream in listener.incoming() {
-        match stream {
-            Ok(stream) => {
-                handle_client(stream);
-            }
-            Err(e) => {
-                println!("Unable to connect: {}", e);
-            }
-        }
-    }
-}

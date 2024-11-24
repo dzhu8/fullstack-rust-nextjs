@@ -13,7 +13,7 @@ services:
       - rustapp
   rustapp:
     container_name: rustapp
-    image: francescoxx/rustapp:latest
+    #image: francescoxx/rustapp:latest
     build:
       context: ./backend
       dockerfile: rust.dockerfile
